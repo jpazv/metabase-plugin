@@ -1,0 +1,17 @@
+name: metabase
+version: "1.0.0"
+description: Plugin de monitoramento e gestao do Metabase Grupo Velas
+
+skills:
+  - metabase-boot   # bootstrap automatico com briefing
+  - mb-status       # visao geral rapida
+  - mb-check        # verifica issue vs estado do Metabase
+  - mb-dash         # inspeciona dashboard
+  - mb-card         # inspeciona card
+  - mb-report       # gera relatorio MD de validacao
+
+scripts:
+  - scripts/mb_sync.py
+  - scripts/mb_health.py
+  - scripts/mb_check.py
+  - scripts/mb_report.py

@@ -1,0 +1,72 @@
+name: Task Metabase
+description: Tarefa de BI para o Metabase — campos estruturados para automacao
+title: "[{{ tipo | upper }}] "
+labels: ["metabase"]
+body:
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de tarefa
+      description: O que precisa ser feito
+      options:
+        - criar-card
+        - ajustar-card
+        - criar-aba
+        - ajustar-filtro
+        - clonar-dash
+        - criar-dash
+        - remover-card
+        - outro
+    validations:
+      required: true
+
+  - type: input
+    id: dashboard
+    attributes:
+      label: Dashboard
+      description: "ID ou nome do dashboard alvo (ex: dash:316 ou Trafego Pago)"
+      placeholder: "dash:316"
+    validations:
+      required: true
+
+  - type: textarea
+    id: especificacao
+    attributes:
+      label: Especificacao
+      description: |
+        O que deve existir ao final. Use o formato abaixo:
+        - card: "Nome do card"
+        - tipo: table | bar | line | combo | scalar | pivot | progress
+        - tabelas: mv_xxx, dim_yyy
+        - filtros: data, canal, unidade
+        - aba: Nome da aba (se aplicavel)
+        - sql: (opcional) query SQL do card
+      placeholder: |
+        - card: "Agendamentos por Unidade"
+        - tipo: table
+        - tabelas: mv_mkt_outcomes_diario
+        - filtros: data, canal, unidade
+        - aba: Agendamentos
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterio
+    attributes:
+      label: Criterio de aceite
+      description: Como validar que a tarefa esta pronta
+      value: |
+        - [ ] Card existe no dashboard
+        - [ ] Filtros mapeados aos parametros do dash
+        - [ ] Dados retornando sem erro
+        - [ ] Visual correto (tipo de grafico, colunas)
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto adicional
+      description: Informacao extra, referencias, screenshots
+    validations:
+      required: false
